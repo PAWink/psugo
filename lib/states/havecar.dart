@@ -125,7 +125,6 @@ class _HavecarState extends State<Havecar> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 90),
           child: ShowTitle(
             title: 'Upload your car',
             textStyle: MyConstant().h1text(),

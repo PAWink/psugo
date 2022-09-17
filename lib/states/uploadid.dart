@@ -39,7 +39,6 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          color: MyConstant.primary,
           margin: EdgeInsets.symmetric(vertical: 16),
           width: size * 0.6,
           child: ElevatedButton(

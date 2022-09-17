@@ -5,6 +5,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:psugo/states/donthavecar.dart';
 import 'package:psugo/states/havecar.dart';
+import 'package:psugo/utility/my_constant.dart';
 
 class Uhavecar extends StatefulWidget {
   const Uhavecar({super.key});
@@ -34,6 +35,8 @@ class _UhavecarState extends State<Uhavecar> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
+          width: 300,
+          height: 60,
           margin: EdgeInsets.only(top: 16),
           child: ElevatedButton(
             onPressed: () {
@@ -43,7 +46,10 @@ class _UhavecarState extends State<Uhavecar> {
                     builder: (context) => Donthavecar(),
                   ));
             },
-            child: Text('Don\'t have car'),
+            child: Text(
+              'Don\'t have car',
+              style: MyConstant().h1text(),
+            ),
           ),
         ),
       ],
@@ -55,6 +61,8 @@ class _UhavecarState extends State<Uhavecar> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
+          width: 300,
+          height: 60,
           margin: EdgeInsets.only(top: 300),
           child: ElevatedButton(
             onPressed: () {
@@ -64,7 +72,10 @@ class _UhavecarState extends State<Uhavecar> {
                     builder: (context) => Havecar(),
                   ));
             },
-            child: Text('Have car'),
+            child: Text(
+              'Have car',
+              style: MyConstant().h1text(),
+            ),
           ),
         ),
       ],
