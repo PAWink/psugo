@@ -21,21 +21,47 @@ class _UploadidState extends State<Uploadid> {
         child: ListView(
           children: [
             buildImagelogo(size),
+            buildPhoneNum(size),
             buildWuploadid(),
             buildPicard(size),
-            buildPica(size)
+            buildTakePho(size),
           ],
         ),
       ),
     );
   }
 
-  Row buildPica(double size) {
+  Row buildPhoneNum(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: size * 0.5,
+          margin: EdgeInsets.symmetric(vertical: 50),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3text(),
+              labelText: 'Phone number :',
+              prefixIcon: Icon(
+                Icons.phone,
+                color: MyConstant.light,
+              ),
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildTakePho(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 18),
+          width: size * 0.2,
           child: ShowImage(pathImage: MyConstant.cutca),
         ),
       ],
@@ -47,7 +73,8 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: size * 0.75,
+          margin: EdgeInsets.symmetric(vertical: 18),
+          width: size * 0.6,
           child: ShowImage(pathImage: MyConstant.picard),
         )
       ],
