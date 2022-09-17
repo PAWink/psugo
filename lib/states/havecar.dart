@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psugo/states/postcar.dart';
 import 'package:psugo/utility/my_constant.dart';
 import 'package:psugo/widgets/show_image.dart';
 import 'package:psugo/widgets/show_title.dart';
@@ -24,10 +25,32 @@ class _HavecarState extends State<Havecar> {
               buildTakePho(),
               buildWLicense(),
               buildPicLicense(),
-              buildPicarLi()
+              buildPicarLi(),
+              buildNext(context)
             ],
           ),
         ));
+  }
+
+  Row buildNext(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 20),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => Postcar()),
+                  ));
+            },
+            child: Text('Next'),
+          ),
+        ),
+      ],
+    );
   }
 
   Row buildPicarLi() {
@@ -117,8 +140,12 @@ class _HavecarState extends State<Havecar> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
+          padding: EdgeInsets.symmetric(vertical: 15),
+          alignment: Alignment.center,
+          height: 60,
+          width: 300,
           color: Colors.blue,
-          margin: EdgeInsets.only(top: 40),
+          margin: EdgeInsets.symmetric(vertical: 40),
           child: ShowTitle(
             title: 'I have car',
             textStyle: MyConstant().h1text(),
