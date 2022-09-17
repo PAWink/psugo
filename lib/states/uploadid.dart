@@ -17,6 +17,7 @@ class _UploadidState extends State<Uploadid> {
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       body: SafeArea(
         child: ListView(
           children: [

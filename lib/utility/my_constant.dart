@@ -19,9 +19,9 @@ class MyConstant {
   static String cutca = 'image/cutca.png';
 
   //colour
-  static Color primary = Color(0xffab47bc);
-  static Color dark = Color(0xff790e8b);
-  static Color light = Color(0xffdf78ef);
+  static Color primary = Color(0xff0000cd);
+  static Color dark = Color(0xff0000cd);
+  static Color light = Color(0xff00008b);
 
   //style
   TextStyle h1text() => TextStyle(
