@@ -12,6 +12,7 @@ class MyConstant {
   static String routeHavecar = '/havecar';
   static String routeDonthavecar = '/donthavecar';
   static String routeEmergency = '/emergency';
+  static String routePosted = '/posted';
 
   //image
   static String cutlogo = 'image/cutlogo.png';

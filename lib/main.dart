@@ -14,6 +14,7 @@ final Map<String, WidgetBuilder> map = {
   '/havecar': (BuildContext context) => Havecar(),
   '/donthavecar': (BuildContext context) => Donthavecar(),
   '/emergency': (BuildContext context) => Emergency(),
+  '/posted': (BuildContext context) => Postcar(),
 };
 
 String? initlalRoute;
