@@ -10,6 +10,8 @@ class Uhavecar extends StatefulWidget {
 class _UhavecarState extends State<Uhavecar> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.pink,
+    );
   }
 }

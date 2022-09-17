@@ -35,7 +35,7 @@ class MyConstant {
         fontWeight: FontWeight.w700,
       );
   TextStyle h3text() => TextStyle(
-        fontSize: 14,
+        fontSize: 16,
         color: dark,
         fontWeight: FontWeight.normal,
       );

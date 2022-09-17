@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:psugo/states/uhavecar.dart';
 import 'package:psugo/utility/my_constant.dart';
 import 'package:psugo/widgets/show_image.dart';
 import 'package:psugo/widgets/show_title.dart';
@@ -17,7 +18,7 @@ class _UploadidState extends State<Uploadid> {
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: Colors.blue[100],
       body: SafeArea(
         child: ListView(
           children: [
@@ -26,9 +27,33 @@ class _UploadidState extends State<Uploadid> {
             buildWuploadid(),
             buildPicard(size),
             buildTakePho(size),
+            buildNext(size),
           ],
         ),
       ),
+    );
+  }
+
+  Row buildNext(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          color: MyConstant.primary,
+          margin: EdgeInsets.symmetric(vertical: 16),
+          width: size * 0.6,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Uhavecar(),
+                  ));
+            },
+            child: Text('Next'),
+          ),
+        ),
+      ],
     );
   }
 
@@ -37,7 +62,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
+          margin: EdgeInsets.symmetric(vertical: 30),
           width: size * 0.6,
           child: TextFormField(
             decoration: InputDecoration(
@@ -87,7 +112,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 25),
+          margin: EdgeInsets.only(top: 5),
           child: ShowTitle(
             title: MyConstant.contin,
             textStyle: MyConstant().h1text(),
@@ -102,8 +127,8 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 60),
-          width: size * 0.6,
+          margin: EdgeInsets.only(top: 80),
+          width: size * 0.4,
           child: ShowImage(pathImage: MyConstant.cutlogo),
         ),
       ],
