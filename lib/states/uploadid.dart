@@ -36,7 +36,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 50),
+          margin: EdgeInsets.symmetric(vertical: 10),
           width: size * 0.6,
           child: TextFormField(
             decoration: InputDecoration(
@@ -60,7 +60,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 18),
+          margin: EdgeInsets.symmetric(vertical: 5),
           width: size * 0.2,
           child: ShowImage(pathImage: MyConstant.cutca),
         ),
@@ -73,7 +73,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 18),
+          margin: EdgeInsets.symmetric(vertical: 30),
           width: size * 0.6,
           child: ShowImage(pathImage: MyConstant.picard),
         )
@@ -85,7 +85,13 @@ class _UploadidState extends State<Uploadid> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ShowTitle(title: MyConstant.contin, textStyle: MyConstant().h1text()),
+        Container(
+          margin: EdgeInsets.only(top: 25),
+          child: ShowTitle(
+            title: MyConstant.contin,
+            textStyle: MyConstant().h1text(),
+          ),
+        ),
       ],
     );
   }
@@ -95,6 +101,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
+          margin: EdgeInsets.only(top: 60),
           width: size * 0.6,
           child: ShowImage(pathImage: MyConstant.cutlogo),
         ),
