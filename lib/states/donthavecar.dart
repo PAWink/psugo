@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:psugo/states/postcar.dart';
+import 'package:psugo/states/posted.dart';
 import 'package:psugo/utility/my_constant.dart';
 import 'package:psugo/widgets/show_title.dart';
 
@@ -28,7 +29,7 @@ class _DonthavecarState extends State<Donthavecar> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Postcar(),
+                          builder: (context) => Posted(),
                         ));
                   },
                   child: Text(
