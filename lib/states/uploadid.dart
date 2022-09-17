@@ -41,6 +41,7 @@ class _UploadidState extends State<Uploadid> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 16),
           width: size * 0.6,
+          height: 50,
           child: ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -49,7 +50,10 @@ class _UploadidState extends State<Uploadid> {
                     builder: (context) => Uhavecar(),
                   ));
             },
-            child: Text('Next'),
+            child: Text(
+              'Next',
+              style: MyConstant().h2text(),
+            ),
           ),
         ),
       ],

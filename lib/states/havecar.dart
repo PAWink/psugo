@@ -37,6 +37,8 @@ class _HavecarState extends State<Havecar> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
+          height: 50,
+          width: 200,
           margin: EdgeInsets.symmetric(vertical: 20),
           child: ElevatedButton(
             onPressed: () {
@@ -46,7 +48,10 @@ class _HavecarState extends State<Havecar> {
                     builder: ((context) => Postcar()),
                   ));
             },
-            child: Text('Next'),
+            child: Text(
+              'Next',
+              style: MyConstant().h2text(),
+            ),
           ),
         ),
       ],
