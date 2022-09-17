@@ -20,19 +20,77 @@ class _HavecarState extends State<Havecar> {
             children: [
               buildSHavecar(),
               buildWpica(),
-              buildPcar(),
+              buildPicar(),
+              buildTakePho(),
+              buildWLicense(),
+              buildPicLicense(),
+              buildPicarLi()
             ],
           ),
         ));
   }
 
-  Row buildPcar() {
+  Row buildPicarLi() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 30),
+          height: 60,
+          child: ShowImage(pathImage: MyConstant.cutca),
+        ),
+      ],
+    );
+  }
+
+  Row buildPicLicense() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           height: 120,
-          margin: EdgeInsets.only(top: 10),
+          margin: EdgeInsets.only(top: 30),
+          child: ShowImage(pathImage: MyConstant.driving),
+        ),
+      ],
+    );
+  }
+
+  Row buildWLicense() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 60),
+          child: ShowTitle(
+            title: 'Upload driving license',
+            textStyle: MyConstant().h1text(),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildTakePho() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: 60,
+          margin: EdgeInsets.only(top: 30),
+          child: ShowImage(pathImage: MyConstant.cutca),
+        ),
+      ],
+    );
+  }
+
+  Row buildPicar() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: 120,
+          margin: EdgeInsets.only(top: 30),
           child: ShowImage(pathImage: MyConstant.car),
         ),
       ],
