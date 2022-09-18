@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psugo/states/posted.dart';
 import 'package:psugo/utility/my_constant.dart';
 import 'package:psugo/widgets/show_title.dart';
 
@@ -23,8 +24,35 @@ class _PostcarState extends State<Postcar> {
             buildWto(),
             buildWaytogo(size),
             buildTime(size),
+            buildNext(size),
           ],
         )));
+  }
+
+  Row buildNext(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 40),
+          width: size * 0.6,
+          height: 50,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Posted(),
+                  ));
+            },
+            child: Text(
+              'Next',
+              style: MyConstant().h2text(),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Row buildTime(double size) {
