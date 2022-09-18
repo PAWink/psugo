@@ -12,6 +12,7 @@ class Postcar extends StatefulWidget {
 class _PostcarState extends State<Postcar> {
   @override
   Widget build(BuildContext context) {
+    double size = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Colors.blue[100],
         body: SafeArea(
@@ -20,8 +21,33 @@ class _PostcarState extends State<Postcar> {
             buildPost(),
             buildWstat(),
             buildWto(),
+            buildWaytogo(size),
           ],
         )));
+  }
+
+  Row buildWaytogo(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3text(),
+              labelText: 'Way to go: ',
+              prefixIcon: Icon(
+                Icons.map,
+                color: MyConstant.light,
+              ),
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Row buildWto() {
