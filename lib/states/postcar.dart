@@ -22,8 +22,33 @@ class _PostcarState extends State<Postcar> {
             buildWstat(),
             buildWto(),
             buildWaytogo(size),
+            buildTime(size),
           ],
         )));
+  }
+
+  Row buildTime(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3text(),
+              labelText: 'Time start',
+              prefixIcon: Icon(
+                Icons.time_to_leave,
+                color: MyConstant.light,
+              ),
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Row buildWaytogo(double size) {
