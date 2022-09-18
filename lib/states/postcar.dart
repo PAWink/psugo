@@ -37,7 +37,7 @@ class _PostcarState extends State<Postcar> {
           child: TextFormField(
             decoration: InputDecoration(
               labelStyle: MyConstant().h3text(),
-              labelText: 'Time start',
+              labelText: 'Time start: ',
               prefixIcon: Icon(
                 Icons.time_to_leave,
                 color: MyConstant.light,
