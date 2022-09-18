@@ -28,15 +28,29 @@ class _UploadidState extends State<Uploadid> {
         child: ListView(
           children: [
             buildImagelogo(size),
+            buildProfile(),
+            buildAddPic(),
             buildNickname(size),
             buildFaculty(size),
             buildID(size),
             buildPhoneNum(size),
-            buildAddPic(),
             buildNext(size),
           ],
         ),
       ),
+    );
+  }
+
+  Row buildProfile() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: 120,
+          margin: EdgeInsets.only(top: 30),
+          child: ShowImage(pathImage: MyConstant.cutprof),
+        ),
+      ],
     );
   }
 
@@ -193,7 +207,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 80),
+          margin: EdgeInsets.only(top: 40),
           width: size * 0.4,
           child: ShowImage(pathImage: MyConstant.cutlogo),
         ),
