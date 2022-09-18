@@ -28,14 +28,87 @@ class _UploadidState extends State<Uploadid> {
         child: ListView(
           children: [
             buildImagelogo(size),
+            buildNickname(size),
+            buildFaculty(size),
+            buildID(size),
             buildPhoneNum(size),
-            buildWuploadid(),
-            buildPicard(size),
             buildAddPic(),
             buildNext(size),
           ],
         ),
       ),
+    );
+  }
+
+  Row buildID(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 10),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3text(),
+              labelText: 'ID:',
+              prefixIcon: Icon(
+                Icons.password,
+                color: MyConstant.light,
+              ),
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildFaculty(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 10),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3text(),
+              labelText: 'Faculty :',
+              prefixIcon: Icon(
+                Icons.people_alt_outlined,
+                color: MyConstant.light,
+              ),
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildNickname(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 30),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3text(),
+              labelText: 'Nickname :',
+              prefixIcon: Icon(
+                Icons.people,
+                color: MyConstant.light,
+              ),
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -96,7 +169,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 30),
+          margin: EdgeInsets.symmetric(vertical: 10),
           width: size * 0.6,
           child: TextFormField(
             decoration: InputDecoration(
@@ -109,34 +182,6 @@ class _UploadidState extends State<Uploadid> {
               enabledBorder: OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(),
             ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Row buildPicard(double size) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
-          width: size * 0.6,
-          child: ShowImage(pathImage: MyConstant.picard),
-        )
-      ],
-    );
-  }
-
-  Row buildWuploadid() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 5),
-          child: ShowTitle(
-            title: MyConstant.contin,
-            textStyle: MyConstant().h1text(),
           ),
         ),
       ],
