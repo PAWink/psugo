@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:psugo/states/uhavecar.dart';
 import 'package:psugo/utility/my_constant.dart';
 import 'package:psugo/widgets/show_image.dart';
@@ -14,6 +17,8 @@ class Uploadid extends StatefulWidget {
 }
 
 class _UploadidState extends State<Uploadid> {
+  //imgae picker1
+  File? image;
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
@@ -34,12 +39,14 @@ class _UploadidState extends State<Uploadid> {
     );
   }
 
+//image picker2
+  Future<Null> chooseImage(ImageSource source) async {}
   Row buildAddPic() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () => chooseImage(ImageSource.camera),
           icon: Icon(
             Icons.add_a_photo,
             color: MyConstant.dark,
@@ -47,7 +54,7 @@ class _UploadidState extends State<Uploadid> {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () => chooseImage(ImageSource.gallery),
           icon: Icon(
             Icons.add_photo_alternate,
             color: MyConstant.dark,
