@@ -21,6 +21,7 @@ class MyConstant {
   static String driving = 'image/driving.png';
   static String driving2 = 'image/driving2.png';
   static String car = 'image/car.png';
+  static String cutgall = 'image/cutgall.png';
 
   //colour
   static Color primary = Color(0xff0000cd);

@@ -26,11 +26,35 @@ class _UploadidState extends State<Uploadid> {
             buildPhoneNum(size),
             buildWuploadid(),
             buildPicard(size),
-            buildTakePho(size),
+            buildAddPic(),
             buildNext(size),
           ],
         ),
       ),
+    );
+  }
+
+  Row buildAddPic() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.add_a_photo,
+            color: MyConstant.dark,
+            size: 40,
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.add_photo_alternate,
+            color: MyConstant.dark,
+            size: 40,
+          ),
+        )
+      ],
     );
   }
 
@@ -39,7 +63,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 16),
+          margin: EdgeInsets.symmetric(vertical: 40),
           width: size * 0.6,
           height: 50,
           child: ElevatedButton(
@@ -84,25 +108,12 @@ class _UploadidState extends State<Uploadid> {
     );
   }
 
-  Row buildTakePho(double size) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 5),
-          width: size * 0.2,
-          child: ShowImage(pathImage: MyConstant.cutca),
-        ),
-      ],
-    );
-  }
-
   Row buildPicard(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 30),
+          margin: EdgeInsets.symmetric(vertical: 10),
           width: size * 0.6,
           child: ShowImage(pathImage: MyConstant.picard),
         )
