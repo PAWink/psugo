@@ -18,7 +18,7 @@ class Uploadid extends StatefulWidget {
 
 class _UploadidState extends State<Uploadid> {
   //imgae picker1
-  File? image;
+  File? file;
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
@@ -127,7 +127,19 @@ class _UploadidState extends State<Uploadid> {
   }
 
 //image picker2
-  Future<Null> chooseImage(ImageSource source) async {}
+  Future<Null> chooseImage(ImageSource source) async {
+    try {
+      var result = await ImagePicker().getImage(
+        source: source,
+        maxHeight: 800,
+        maxWidth: 800,
+      );
+      setState(() {
+        file = File(result!.path);
+      });
+    } catch (e) {}
+  }
+
   Row buildAddPic() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -157,7 +169,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 40),
+          margin: EdgeInsets.symmetric(vertical: 20),
           width: size * 0.6,
           height: 50,
           child: ElevatedButton(
