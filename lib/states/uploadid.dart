@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, deprecated_member_use
 
 import 'dart:io';
 
@@ -28,8 +28,7 @@ class _UploadidState extends State<Uploadid> {
         child: ListView(
           children: [
             buildImagelogo(size),
-            buildProfile(),
-            buildAddPic(),
+            buildAddPic(size),
             buildNickname(size),
             buildFaculty(size),
             buildID(size),
@@ -41,14 +40,48 @@ class _UploadidState extends State<Uploadid> {
     );
   }
 
-  Row buildProfile() {
+  //image picker2
+  Future<Null> chooseImage(ImageSource source) async {
+    try {
+      var result = await ImagePicker().getImage(
+        source: source,
+        maxHeight: 800,
+        maxWidth: 800,
+      );
+      setState(() {
+        file = File(result!.path);
+      });
+    } catch (e) {}
+  }
+
+  Row buildAddPic(double size) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        IconButton(
+          padding: EdgeInsets.only(left: 70),
+          onPressed: () => chooseImage(ImageSource.camera),
+          icon: Icon(
+            Icons.add_a_photo,
+            size: 36,
+            color: MyConstant.dark,
+          ),
+        ),
         Container(
-          height: 120,
-          margin: EdgeInsets.only(top: 30),
-          child: ShowImage(pathImage: MyConstant.cutprof),
+            margin: EdgeInsets.only(left: 20),
+            width: size * 0.3,
+            child: file == null
+                ? ShowImage(pathImage: MyConstant.cutprof)
+                : Image.file(file!)),
+        IconButton(
+          padding: EdgeInsets.only(right: 90),
+          onPressed: () => chooseImage(ImageSource.gallery),
+          icon: Icon(
+            Icons.add_photo_alternate,
+            size: 36,
+            color: MyConstant.dark,
+          ),
         ),
       ],
     );
@@ -122,44 +155,6 @@ class _UploadidState extends State<Uploadid> {
             ),
           ),
         ),
-      ],
-    );
-  }
-
-//image picker2
-  Future<Null> chooseImage(ImageSource source) async {
-    try {
-      var result = await ImagePicker().getImage(
-        source: source,
-        maxHeight: 800,
-        maxWidth: 800,
-      );
-      setState(() {
-        file = File(result!.path);
-      });
-    } catch (e) {}
-  }
-
-  Row buildAddPic() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          onPressed: () => chooseImage(ImageSource.camera),
-          icon: Icon(
-            Icons.add_a_photo,
-            color: MyConstant.dark,
-            size: 40,
-          ),
-        ),
-        IconButton(
-          onPressed: () => chooseImage(ImageSource.gallery),
-          icon: Icon(
-            Icons.add_photo_alternate,
-            color: MyConstant.dark,
-            size: 40,
-          ),
-        )
       ],
     );
   }
