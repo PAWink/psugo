@@ -214,7 +214,7 @@ class _UploadidState extends State<Uploadid> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 40),
+          margin: EdgeInsets.symmetric(vertical: 20),
           width: size * 0.4,
           child: ShowImage(pathImage: MyConstant.cutlogo),
         ),
