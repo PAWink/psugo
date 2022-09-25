@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:psugo/states/uhavecar.dart';
 import 'package:psugo/utility/my_constant.dart';
 import 'package:psugo/widgets/show_image.dart';
-import 'package:psugo/widgets/show_title.dart';
 
 class Uploadid extends StatefulWidget {
   const Uploadid({super.key});
@@ -17,6 +16,9 @@ class Uploadid extends StatefulWidget {
 }
 
 class _UploadidState extends State<Uploadid> {
+  //drop down
+  List<String> items = ['CoC', 'FTE', 'FHT', 'FIS'];
+  String selectedItem = 'CoC';
   //imgae picker1
   File? file;
   @override
@@ -37,6 +39,38 @@ class _UploadidState extends State<Uploadid> {
           ],
         ),
       ),
+    );
+  }
+
+  Row buildFaculty(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 10),
+          width: size * 0.6,
+          child: SizedBox(
+            width: 240,
+            child: DropdownButtonFormField(
+              dropdownColor: Colors.blue[200],
+              decoration: InputDecoration(
+                  prefixText: 'Faculty: ',
+                  prefixIcon: Icon(Icons.people),
+                  enabledBorder: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder()),
+              items: items
+                  .map((item) => DropdownMenuItem<String>(
+                        value: item,
+                        child: Text(item),
+                      ))
+                  .toList(),
+              onChanged: (item) => setState(
+                () => selectedItem = item!,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -100,30 +134,6 @@ class _UploadidState extends State<Uploadid> {
               labelText: 'ID:',
               prefixIcon: Icon(
                 Icons.password,
-                color: MyConstant.light,
-              ),
-              enabledBorder: OutlineInputBorder(),
-              focusedBorder: OutlineInputBorder(),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Row buildFaculty(double size) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 10),
-          width: size * 0.6,
-          child: TextFormField(
-            decoration: InputDecoration(
-              labelStyle: MyConstant().h3text(),
-              labelText: 'Faculty :',
-              prefixIcon: Icon(
-                Icons.people_alt_outlined,
                 color: MyConstant.light,
               ),
               enabledBorder: OutlineInputBorder(),
