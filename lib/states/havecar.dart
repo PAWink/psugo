@@ -1,4 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:psugo/states/postcar.dart';
 import 'package:psugo/utility/my_constant.dart';
 import 'package:psugo/widgets/show_image.dart';
@@ -12,8 +17,12 @@ class Havecar extends StatefulWidget {
 }
 
 class _HavecarState extends State<Havecar> {
+  //imgae picker1
+  File? fileCar;
+  File? fileLicense;
   @override
   Widget build(BuildContext context) {
+    double size = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Colors.blue[100],
         body: SafeArea(
@@ -21,15 +30,107 @@ class _HavecarState extends State<Havecar> {
             children: [
               buildSHavecar(),
               buildWpica(),
-              buildPicar(),
-              buildTakePho(),
+              buildPicCar(size),
               buildWLicense(),
-              buildPicLicense(),
-              buildPicarLi(),
+              buildPicLicense(size),
               buildNext(context)
             ],
           ),
         ));
+  }
+
+  //image picker Car
+  Future<Null> chooseImageCar(ImageSource source) async {
+    try {
+      var result = await ImagePicker().getImage(
+        source: source,
+        maxHeight: 800,
+        maxWidth: 800,
+      );
+      setState(() {
+        fileCar = File(result!.path);
+      });
+    } catch (e) {}
+  }
+
+  //image picker License
+  Future<Null> chooseImageLicense(ImageSource source) async {
+    try {
+      var result = await ImagePicker().getImage(
+        source: source,
+        maxHeight: 800,
+        maxWidth: 800,
+      );
+      setState(() {
+        fileLicense = File(result!.path);
+      });
+    } catch (e) {}
+  }
+
+  Row buildPicCar(double size) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconButton(
+          padding: EdgeInsets.only(left: 70),
+          onPressed: () => chooseImageCar(ImageSource.camera),
+          icon: Icon(
+            Icons.add_a_photo,
+            size: 36,
+            color: MyConstant.dark,
+          ),
+        ),
+        Container(
+            margin: EdgeInsets.only(left: 20),
+            width: size * 0.3,
+            child: fileCar == null
+                ? ShowImage(pathImage: MyConstant.car)
+                : Image.file(fileCar!)),
+        IconButton(
+          padding: EdgeInsets.only(right: 90),
+          onPressed: () => chooseImageCar(ImageSource.gallery),
+          icon: Icon(
+            Icons.add_photo_alternate,
+            size: 36,
+            color: MyConstant.dark,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildPicLicense(double size) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconButton(
+          padding: EdgeInsets.only(left: 70),
+          onPressed: () => chooseImageLicense(ImageSource.camera),
+          icon: Icon(
+            Icons.add_a_photo,
+            size: 36,
+            color: MyConstant.dark,
+          ),
+        ),
+        Container(
+            margin: EdgeInsets.only(left: 20),
+            width: size * 0.3,
+            child: fileLicense == null
+                ? ShowImage(pathImage: MyConstant.driving)
+                : Image.file(fileLicense!)),
+        IconButton(
+          padding: EdgeInsets.only(right: 90),
+          onPressed: () => chooseImageLicense(ImageSource.gallery),
+          icon: Icon(
+            Icons.add_photo_alternate,
+            size: 36,
+            color: MyConstant.dark,
+          ),
+        ),
+      ],
+    );
   }
 
   Row buildNext(BuildContext context) {
@@ -39,7 +140,7 @@ class _HavecarState extends State<Havecar> {
         Container(
           height: 50,
           width: 200,
-          margin: EdgeInsets.symmetric(vertical: 20),
+          margin: EdgeInsets.symmetric(vertical: 50),
           child: ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -58,68 +159,16 @@ class _HavecarState extends State<Havecar> {
     );
   }
 
-  Row buildPicarLi() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 30),
-          height: 60,
-          child: ShowImage(pathImage: MyConstant.cutca),
-        ),
-      ],
-    );
-  }
-
-  Row buildPicLicense() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: 120,
-          margin: EdgeInsets.only(top: 30),
-          child: ShowImage(pathImage: MyConstant.driving),
-        ),
-      ],
-    );
-  }
-
   Row buildWLicense() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 60),
+          margin: EdgeInsets.symmetric(vertical: 40),
           child: ShowTitle(
             title: 'Upload driving license',
             textStyle: MyConstant().h1text(),
           ),
-        ),
-      ],
-    );
-  }
-
-  Row buildTakePho() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: 60,
-          margin: EdgeInsets.only(top: 30),
-          child: ShowImage(pathImage: MyConstant.cutca),
-        ),
-      ],
-    );
-  }
-
-  Row buildPicar() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: 120,
-          margin: EdgeInsets.only(top: 30),
-          child: ShowImage(pathImage: MyConstant.car),
         ),
       ],
     );
@@ -130,6 +179,7 @@ class _HavecarState extends State<Havecar> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
+          margin: EdgeInsets.symmetric(vertical: 40),
           child: ShowTitle(
             title: 'Upload your car',
             textStyle: MyConstant().h1text(),
