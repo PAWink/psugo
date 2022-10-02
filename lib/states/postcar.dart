@@ -11,9 +11,15 @@ class Postcar extends StatefulWidget {
 }
 
 class _PostcarState extends State<Postcar> {
+  //set time
+  TimeOfDay time = TimeOfDay(hour: 10, minute: 30);
   @override
   Widget build(BuildContext context) {
+    //size
     double size = MediaQuery.of(context).size.width;
+    //time
+    final hours = time.hour.toString().padLeft(2, '0');
+    final minutes = time.minute.toString().padLeft(2, '0');
     return Scaffold(
         backgroundColor: Colors.blue[100],
         body: SafeArea(
@@ -23,10 +29,48 @@ class _PostcarState extends State<Postcar> {
             buildWstat(),
             buildWto(),
             buildWaytogo(size),
-            buildTime(size),
+            buileShowTime(),
+            buildSetTime(),
             buildNext(size),
           ],
         )));
+  }
+
+  Row buildSetTime() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+            child: ElevatedButton(
+          child: Text('Select time'),
+          onPressed: () async {
+            TimeOfDay? newTime = await showTimePicker(
+              context: context,
+              initialTime: time,
+            );
+            //cencle time
+            if (newTime == null) return;
+            //ok
+            setState(() => time = newTime);
+          },
+        )),
+      ],
+    );
+  }
+
+  Row buileShowTime() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          child: Text(
+            '${time.hour}:${time.minute}',
+            style: MyConstant().h1text(),
+          ),
+        ),
+      ],
+    );
   }
 
   Row buildNext(double size) {
@@ -48,30 +92,6 @@ class _PostcarState extends State<Postcar> {
             child: Text(
               'Next',
               style: MyConstant().h2text(),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Row buildTime(double size) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 40),
-          width: size * 0.6,
-          child: TextFormField(
-            decoration: InputDecoration(
-              labelStyle: MyConstant().h3text(),
-              labelText: 'Time start: ',
-              prefixIcon: Icon(
-                Icons.time_to_leave,
-                color: MyConstant.light,
-              ),
-              enabledBorder: OutlineInputBorder(),
-              focusedBorder: OutlineInputBorder(),
             ),
           ),
         ),
