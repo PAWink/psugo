@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:psugo/states/okgo.dart';
+import 'package:psugo/states/emergency.dart';
 import 'package:psugo/utility/my_constant.dart';
 
-class Sendrequest extends StatefulWidget {
-  const Sendrequest({super.key});
+class Okgo extends StatefulWidget {
+  const Okgo({super.key});
 
   @override
-  State<Sendrequest> createState() => _SendrequestState();
+  State<Okgo> createState() => _OkgoState();
 }
 
-class _SendrequestState extends State<Sendrequest> {
+class _OkgoState extends State<Okgo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,14 +17,14 @@ class _SendrequestState extends State<Sendrequest> {
       body: SafeArea(
         child: ListView(
           children: [
-            buildRequest(context),
+            buildOkgo(context),
           ],
         ),
       ),
     );
   }
 
-  Row buildRequest(BuildContext context) {
+  Row buildOkgo(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -37,11 +37,11 @@ class _SendrequestState extends State<Sendrequest> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Okgo(),
+                    builder: (context) => Emergency(),
                   ));
             },
             child: Text(
-              'I want to go with you',
+              'OK go',
               style: MyConstant().h1text(),
             ),
           ),
