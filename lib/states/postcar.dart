@@ -15,7 +15,8 @@ class _PostcarState extends State<Postcar> {
   List<String> items = [
     'The President\' office',
     'Canteen',
-    'Central Academic'
+    'Central Academic(6)',
+    'Library'
   ];
   String selectedItem = 'The President\' office';
   //set time
@@ -33,14 +34,117 @@ class _PostcarState extends State<Postcar> {
             child: ListView(
           children: [
             buildPost(),
+            buildWstart(),
             buildPointstart(size),
             buildWto(),
             buildWaytogo(size),
+            buildWseat(),
+            buildNumseat(size),
+            buildWprice(),
+            buildPrice(size),
+            buildWtime(),
             buileShowTime(),
             buildSetTime(),
             buildNext(size),
           ],
         )));
+  }
+
+  Row buildWstart() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          child: ShowTitle(title: 'Start', textStyle: MyConstant().h1text()),
+        ),
+      ],
+    );
+  }
+
+  Row buildWtime() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          child: ShowTitle(title: 'Time', textStyle: MyConstant().h1text()),
+        ),
+      ],
+    );
+  }
+
+  Row buildPrice(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3text(),
+              labelText: 'Price: ',
+              prefixIcon: Icon(
+                Icons.attach_money_sharp,
+                color: MyConstant.light,
+              ),
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildWprice() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          child: ShowTitle(title: 'Price', textStyle: MyConstant().h1text()),
+        ),
+      ],
+    );
+  }
+
+  Row buildNumseat(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3text(),
+              labelText: 'Number of seats: ',
+              prefixIcon: Icon(
+                Icons.people_alt,
+                color: MyConstant.light,
+              ),
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildWseat() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          child: ShowTitle(
+              title: 'Number of seats', textStyle: MyConstant().h1text()),
+        ),
+      ],
+    );
   }
 
 //Choose Start point
@@ -49,7 +153,7 @@ class _PostcarState extends State<Postcar> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 80),
+          margin: EdgeInsets.only(top: 40),
           width: size * 0.7,
           child: SizedBox(
             height: 80,
@@ -57,7 +161,7 @@ class _PostcarState extends State<Postcar> {
             child: DropdownButtonFormField(
               dropdownColor: Colors.blue[200],
               decoration: InputDecoration(
-                  prefixText: 'Point: ',
+                  prefixText: 'Start: ',
                   prefixIcon: Icon(Icons.people),
                   enabledBorder: OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder()),
