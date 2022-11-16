@@ -15,7 +15,7 @@ class _PostcarState extends State<Postcar> {
   List<String> items = [
     'The President\' office',
     'Canteen',
-    'Central Academic(6)',
+    'Building 6',
     'Library'
   ];
   String selectedItem = 'The President\' office';
@@ -159,6 +159,7 @@ class _PostcarState extends State<Postcar> {
             height: 80,
             width: 200,
             child: DropdownButtonFormField(
+              hint: Text('choose'),
               dropdownColor: Colors.blue[200],
               decoration: InputDecoration(
                   prefixText: 'Start: ',

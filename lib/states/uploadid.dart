@@ -52,6 +52,7 @@ class _UploadidState extends State<Uploadid> {
           child: SizedBox(
             width: 240,
             child: DropdownButtonFormField(
+              hint: Text('Choose'),
               dropdownColor: Colors.blue[200],
               decoration: InputDecoration(
                   prefixText: 'Faculty: ',
