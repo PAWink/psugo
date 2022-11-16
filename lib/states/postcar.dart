@@ -11,6 +11,13 @@ class Postcar extends StatefulWidget {
 }
 
 class _PostcarState extends State<Postcar> {
+  //drop down
+  List<String> items = [
+    'The President\' office',
+    'Canteen',
+    'Central Academic'
+  ];
+  String selectedItem = 'The President\' office';
   //set time
   TimeOfDay time = TimeOfDay(hour: 10, minute: 30);
   @override
@@ -26,7 +33,7 @@ class _PostcarState extends State<Postcar> {
             child: ListView(
           children: [
             buildPost(),
-            buildWstat(),
+            buildPointstart(size),
             buildWto(),
             buildWaytogo(size),
             buileShowTime(),
@@ -34,6 +41,40 @@ class _PostcarState extends State<Postcar> {
             buildNext(size),
           ],
         )));
+  }
+
+//Choose Start point
+  Row buildPointstart(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 80),
+          width: size * 0.7,
+          child: SizedBox(
+            height: 80,
+            width: 200,
+            child: DropdownButtonFormField(
+              dropdownColor: Colors.blue[200],
+              decoration: InputDecoration(
+                  prefixText: 'Point: ',
+                  prefixIcon: Icon(Icons.people),
+                  enabledBorder: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder()),
+              items: items
+                  .map((item) => DropdownMenuItem<String>(
+                        value: item,
+                        child: Text(item),
+                      ))
+                  .toList(),
+              onChanged: (item) => setState(
+                () => selectedItem = item!,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Row buildSetTime() {
@@ -130,21 +171,6 @@ class _PostcarState extends State<Postcar> {
         Container(
           margin: EdgeInsets.only(top: 40),
           child: ShowTitle(title: 'To', textStyle: MyConstant().h1text()),
-        ),
-      ],
-    );
-  }
-
-  Row buildWstat() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 40),
-          child: ShowTitle(
-            title: 'Start from PSU Phuket',
-            textStyle: MyConstant().h1text(),
-          ),
         ),
       ],
     );
