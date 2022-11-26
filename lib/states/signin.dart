@@ -11,7 +11,10 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  //ทำให้พิมพ์อีเมลและพาสเวิดถูกต้องตามแบบ
   final keyTrue = GlobalKey<FormState>();
+  //ตัวแปรเก็บอีเมลและพาสเวิด
+  late String name, email, password;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,7 @@ class _SignInState extends State<SignIn> {
           child: ListView(
             children: [
               buildLogo(size),
+              buildName(size),
               buildEmail(size),
               buildPassword(size),
               buildNext(size),
@@ -46,12 +50,40 @@ class _SignInState extends State<SignIn> {
             onPressed: () {
               if (keyTrue.currentState!.validate()) {
                 keyTrue.currentState!.save();
+                print('name = $name, emali = $email, password = $password');
               }
             },
             child: Text(
               'Next',
               style: MyConstant().h2text(),
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildName(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 30),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3text(),
+              labelText: 'Name :',
+              prefixIcon: Icon(
+                Icons.person_outline_sharp,
+                color: MyConstant.dark,
+              ),
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(),
+            ),
+            onSaved: (String? value) {
+              name = value!.trim();
+            },
           ),
         ),
       ],
@@ -96,6 +128,9 @@ class _SignInState extends State<SignIn> {
                 return null;
               }
             },
+            onSaved: (String? value) {
+              password = value!.trim();
+            },
           ),
         ),
       ],
@@ -126,6 +161,9 @@ class _SignInState extends State<SignIn> {
               } else {
                 return null;
               }
+            },
+            onSaved: (String? value) {
+              email = value!.trim();
             },
           ),
         ),
