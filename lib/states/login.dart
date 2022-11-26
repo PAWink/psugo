@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:psugo/states/myprofile.dart';
 import 'package:psugo/states/uploadid.dart';
 
 import '../utility/my_constant.dart';
@@ -25,7 +26,7 @@ class _LogInState extends State<LogIn> {
         .then((response) {
       print('Authen success');
       MaterialPageRoute materialPageRoute =
-          MaterialPageRoute(builder: (BuildContext context) => Uploadid());
+          MaterialPageRoute(builder: (BuildContext context) => Myprofile());
       Navigator.of(context).pushAndRemoveUntil(
           materialPageRoute, (Route<dynamic> route) => false);
     }).catchError((response) {
