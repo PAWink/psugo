@@ -4,6 +4,7 @@ import 'package:psugo/states/donthavecar.dart';
 import 'package:psugo/states/emergency.dart';
 import 'package:psugo/states/havecar.dart';
 import 'package:psugo/states/login.dart';
+import 'package:psugo/states/myprofile.dart';
 import 'package:psugo/states/postcar.dart';
 import 'package:psugo/states/signin.dart';
 import 'package:psugo/states/splash.dart';
@@ -22,6 +23,7 @@ final Map<String, WidgetBuilder> map = {
   '/login': (BuildContext context) => LogIn(),
   '/signIn': (BuildContext context) => SignIn(),
   '/spla': (BuildContext context) => Spla(),
+  '/myprofile': (BuildContext context) => Myprofile(),
 };
 
 String? initlalRoute;

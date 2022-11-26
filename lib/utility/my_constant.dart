@@ -16,6 +16,7 @@ class MyConstant {
   static String routeLogIn = '/login';
   static String routeSignIn = '/signin';
   static String routeSpla = '/spla';
+  static String routeMyprofile = '/myprofile';
 
   //image
   static String cutlogo = 'image/cutlogo.png';

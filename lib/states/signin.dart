@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:psugo/states/uploadid.dart';
 
 import '../utility/my_constant.dart';
 import '../widgets/show_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -30,7 +32,7 @@ class _SignInState extends State<SignIn> {
               buildName(size),
               buildEmail(size),
               buildPassword(size),
-              buildNext(size),
+              buildRegis(size),
             ],
           ),
         ),
@@ -38,7 +40,68 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  Row buildNext(double size) {
+//เชื่อมต่อไฟรเบส
+  Future<void> registerMethod() async {
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    await firebaseAuth
+        .createUserWithEmailAndPassword(email: email, password: password)
+        .then((response) {
+      print('Regis success');
+      //แสดงชื่อ
+      setupDisplayName();
+    }).catchError((response) {
+      String title = response.code;
+      String message = response.message;
+      print('title = $title, message = $message');
+      myAlert(title, message);
+    });
+  }
+
+  //แจ้งเตือน
+  void myAlert(String title, String message) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: ListTile(
+              leading: Icon(
+                Icons.add_alert,
+                color: Colors.red,
+              ),
+              title: Text(
+                title,
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+            content: Text(message),
+            actions: <Widget>[
+              ElevatedButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  })
+            ],
+          );
+        });
+  }
+
+//แสดงชื่อ display name
+  Future<void> setupDisplayName() async {
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
+    var user = firebaseAuth.currentUser;
+    if (user != null) {
+      // ignore: deprecated_member_use
+      user.updateProfile(displayName: name);
+
+      MaterialPageRoute materialPageRoute =
+          MaterialPageRoute(builder: (BuildContext context) => Uploadid());
+      Navigator.of(context).pushAndRemoveUntil(
+          materialPageRoute, (Route<dynamic> route) => false);
+    }
+  }
+
+  Row buildRegis(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -51,10 +114,11 @@ class _SignInState extends State<SignIn> {
               if (keyTrue.currentState!.validate()) {
                 keyTrue.currentState!.save();
                 print('name = $name, emali = $email, password = $password');
+                registerMethod();
               }
             },
             child: Text(
-              'Next',
+              'Register',
               style: MyConstant().h2text(),
             ),
           ),
