@@ -13,7 +13,9 @@ class MyConstant {
   static String routeDonthavecar = '/donthavecar';
   static String routeEmergency = '/emergency';
   static String routePosted = '/posted';
-  static String routeLoginWithPhone = '/loginwithphone';
+  static String routeLogIn = '/login';
+  static String routeSignIn = '/signin';
+  static String routeSpla = '/spla';
 
   //image
   static String cutlogo = 'image/cutlogo.png';
@@ -27,8 +29,8 @@ class MyConstant {
 
   //colour
   static Color primary = Color(0xff0000cd);
-  static Color dark = Color(0xff0000cd);
-  static Color light = Color(0xff00008b);
+  static Color dark = Color.fromARGB(255, 24, 51, 126);
+  static Color light = Color.fromARGB(255, 255, 255, 255);
 
   //style
   TextStyle h1text() => TextStyle(
@@ -38,8 +40,8 @@ class MyConstant {
       );
   TextStyle h2text() => TextStyle(
         fontSize: 18,
-        color: dark,
-        fontWeight: FontWeight.w700,
+        color: light,
+        fontWeight: FontWeight.normal,
       );
   TextStyle h3text() => TextStyle(
         fontSize: 16,

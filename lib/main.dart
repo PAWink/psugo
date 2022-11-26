@@ -5,6 +5,8 @@ import 'package:psugo/states/emergency.dart';
 import 'package:psugo/states/havecar.dart';
 import 'package:psugo/states/login.dart';
 import 'package:psugo/states/postcar.dart';
+import 'package:psugo/states/signin.dart';
+import 'package:psugo/states/splash.dart';
 import 'package:psugo/states/uhavecar.dart';
 import 'package:psugo/states/uploadid.dart';
 import 'package:psugo/utility/my_constant.dart';
@@ -17,7 +19,9 @@ final Map<String, WidgetBuilder> map = {
   '/donthavecar': (BuildContext context) => Donthavecar(),
   '/emergency': (BuildContext context) => Emergency(),
   '/posted': (BuildContext context) => Postcar(),
-  '/loginwithphone': (BuildContext context) => LoginWithPhone(),
+  '/login': (BuildContext context) => LogIn(),
+  '/signIn': (BuildContext context) => SignIn(),
+  '/spla': (BuildContext context) => Spla(),
 };
 
 String? initlalRoute;
@@ -25,7 +29,7 @@ String? initlalRoute;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  initlalRoute = MyConstant.routeLoginWithPhone;
+  initlalRoute = MyConstant.routeSpla;
   runApp(MyApp());
 }
 
